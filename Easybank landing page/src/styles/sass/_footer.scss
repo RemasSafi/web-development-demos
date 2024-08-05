@@ -1,0 +1,109 @@
+.footer {
+    background-color: $darkBlue;
+    color: $white;
+    padding: 2.5rem;
+    text-align: center;
+
+    .container {
+        @include breakpoint-up(large) {
+            display: grid;
+            justify-items: start;
+            grid-template-columns: repeat(3, 1fr) 2fr;
+            grid-template-rows: repeat(2, 1fr);
+            // The columns and row you've just created will give each cell a name, and more than one cell with the same name will be considered one
+            grid-template-areas:
+                "logo menu1 menu2 cta"
+                "links menu1 menu2 cta";
+
+        }
+    }
+
+    a {
+        color: $white;
+    }
+
+    &__logo {
+        display: inline-block;
+        margin-bottom: 1.875rem;
+
+        @include breakpoint-up(large) {
+            grid-area: logo;
+        }
+    }
+
+    &__links {
+        margin-bottom: 1.875rem;
+
+        a {
+            svg path {
+                transition: fill 150ms ease-in-out;
+
+            }
+
+            &:hover svg path {
+                fill: $limeGreen;
+            }
+
+            &:not(:last-child) {
+                padding-right: 0.8rem;
+            }
+        }
+
+        @include breakpoint-up(large) {
+            grid-area: links;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 2;
+
+        @include breakpoint-up(large) {
+            align-items: start;
+
+        }
+
+        a {
+            transition: color 150ms ease-in-out;
+
+            &:hover {
+                color: $limeGreen;
+            }
+        }
+
+        &.col1 {
+            @include breakpoint-up(large) {
+                grid-area: menu1;
+            }
+        }
+
+        &.col2 {
+            margin-bottom: 1.875rem;
+
+            @include breakpoint-up(large) {
+                grid-area: menu2;
+            }
+        }
+    }
+
+    &__cta {
+        a {
+            margin-bottom: 1.875rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 0.5;
+            color: $grayishBlue;
+        }
+
+        @include breakpoint-up(large) {
+            grid-area: cta;
+            justify-self: end;
+            text-align: end;
+        }
+    }
+
+}

@@ -1,0 +1,67 @@
+.articles {
+    background-color: $veryLightGray;
+
+    a {
+        color: $grayishBlue;
+    }
+
+    h2 {
+        text-align: center;
+
+        @include breakpoint-up(large) {
+            text-align: left;
+
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.9375rem;
+        // Alternative way to let the grid deside the sizes, but for 4 items, 3 on one line and one alone that won't look good
+        // check https://www.youtube.com/watch?v=aoQ6S1a32j8&t=9696s  
+        // min 3:35:00
+        // grid-template-columns: repeat(auto-fit, minmax(14.375rem, 1fr));
+
+        @include breakpoint-up(medium) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+
+        @include breakpoint-up(large) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+        }
+    }
+
+    &__item {
+        background-color: white;
+        overflow: hidden;
+        border-radius: 0.3125rem;
+        margin-bottom: 1.8rem;
+        box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+        transition: all 150ms ease-in-out;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &__img {
+            height: 12.5rem;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+        }
+
+        &__text {
+            padding: 2.375rem;
+        }
+
+        &__subtitle {
+            font-size: $font-sm;
+        }
+    }
+}
